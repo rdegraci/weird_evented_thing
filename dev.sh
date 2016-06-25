@@ -1,5 +1,5 @@
 #!/bin/bash
-while sleep 2; do 
+function huff() {
   (
     date
     echo
@@ -7,4 +7,9 @@ while sleep 2; do
   )> a
   clear
   cat a 
+}
+
+huff
+while sleep 2; do 
+  huff &
 done

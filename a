@@ -1,0 +1,22 @@
+Fri Jun 24 21:50:37 PDT 2016
+
+init -> state_changed_0
+==> state_changed_0 proc { @a = @b = 0 }
+
+textbox_a_click -> a_given -> a_displayed -> state_changed_4
+==> state_changed_4 ???
+a == 0
+textbox_a_click -> a_given -> a_displayed -> state_changed_4 -> state_changed_1
+==> state_changed_1 proc { @a = 1 }
+
+textbox_b_click -> b_given -> a_displayed -> state_changed_4
+==> state_changed_4 ???
+a == 1
+textbox_b_click -> b_given -> a_displayed -> state_changed_4 -> state_changed_2
+==> state_changed_2 proc { @b = 1 }
+
+button_click -> a_incremented -> a_displayed -> state_changed_4
+==> state_changed_4 ???
+a == 1
+button_click -> a_incremented -> a_displayed -> state_changed_4 -> state_changed_3
+==> state_changed_3 proc { @a = (@a + 1) }
