@@ -21,13 +21,17 @@ events = Events.new(:verbose => true) do
 
   a_displayed :a_given, :b_given, :a_incremented
 
-  condition_met :a_is_greater_than_2, :a_incremented
 
-  # Output events
-  state_changed(:a_given) { @a=1 }
-  state_changed(:b_given) { @b=1 }
-  state_changed(:a_incremented) { @a+=1 }
-  state_changed(:a_displayed) { puts "\n\na == #{@a.inspect}\n\n" }
+  conditions do
+    a_is_greater_than_2 :a_is_incremented { @a > 2 }
+  end
+
+  state_changes do
+    a_given { @a=1 }
+    b_given { @b=1 }
+    a_incremented { @a+=1 }
+    a_displayed { puts "\n\na == #{@a.inspect}\n\n" }
+  end
 end
 
 
